@@ -1,0 +1,91 @@
+ body {
+    font-family: Arial, sans-serif;
+    background-color: #071529;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container {
+    width: 800px;
+    height: 450px;
+    background-image: url("img/back.jpg");
+    background-size: cover;
+    margin: auto;
+    border-radius: 55px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    -webkit-box-shadow: inset 340px 0px 89px 40px rgba(15,15,15,0.69);
+    -moz-box-shadow: inset 340px 0px 89px 40px rgba(15,15,15,0.69);
+    box-shadow: inset 340px 0px 90px 40px rgba(15,15,15,0.69);
+}
+
+
+
+.container form{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 5px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.container h1 {
+    font-family: "Luckiest Guy", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    font-size: 40px;
+    margin-top: 50px;
+}
+.container label{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+.container input{
+    background-color: rgba(26, 26, 26, 56%);
+    appearance: none;
+    border: 1px solid #5D6069;
+    border-radius:5px;
+    padding: 5px 5px;
+    width: calc(100% - 12px);
+    overflow: hidden;
+    color: white;
+}
+.container input:focus{
+    outline: none;
+}
+
+.container button {
+    background-color: rgba(49, 26, 143, 80%);
+    border-radius: 16px;
+    appearance: none;
+    border: none;
+    padding: 13px 5px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    font-size: 24px;
+    transition: font-size 0.2s;
+}
+.container button:hover {
+    cursor: pointer;
+    background-color: rgba(70, 40, 190, 0.8);
+}
+
+.container a {
+    color: #797979;
+    font-size: 12px;
+    text-align: end;
+    padding: 8px 5px;
+}
