@@ -2,7 +2,7 @@
 if (isset($_POST["codigo_operacao"]) && isset($_POST['nome']) && isset($_POST['fornecedor']) && isset($_POST['preco']) && isset($_FILES["file"])) {
     $codigo_operacao = $_POST["codigo_operacao"];
     $nome = $_POST["nome"];
-    $fornecedor = $_POST["fornecedor"];
+    $nome_fantasia_fornecedor = $_POST["fornecedor"];
     $preco = $_POST["preco"];
     $file = $_FILES["file"];
 
@@ -13,6 +13,23 @@ if (isset($_POST["codigo_operacao"]) && isset($_POST['nome']) && isset($_POST['f
     $stmt_check->execute();
     $result_check = $stmt_check->get_result();
     
+    $sql_select_fornecedor_id = "SELECT id FROM fornecedores WHERE nome_fantasia = ?";
+    $stmt_select_fornecedor_id = $conn->prepare($sql_select_fornecedor_id);
+    $stmt_select_fornecedor_id->bind_param("s", $nome_fantasia_fornecedor);
+    $stmt_select_fornecedor_id->execute();
+    $result_select_fornecedor_id = $stmt_select_fornecedor_id->get_result();
+
+    if ($result_select_fornecedor_id->num_rows > 0) {
+        // Obtenha o ID do fornecedor
+        $row = $result_select_fornecedor_id->fetch_assoc();
+        $fornecedor_id = $row['id'];
+    
+        // Agora você pode usar $fornecedor_id na sua consulta de inserção na tabela produtos
+    } else {
+        // Se o fornecedor não for encontrado, você precisa decidir como lidar com essa situação
+        echo "Fornecedor não encontrado.";
+    }
+
     if ($result_check->num_rows > 0) {
         echo "<script>alert('Já existe um produto registrado com o mesmo código de operacão.');</script>";
     } else {
@@ -39,7 +56,7 @@ if (isset($_POST["codigo_operacao"]) && isset($_POST['nome']) && isset($_POST['f
             // Prepara a consulta SQL para inserir o novo produto
             $sql_insert = "INSERT INTO produtos (codigo_operacao, nome_produto, preco, fornecedor, img_path) VALUES (?, ?, ?, ?, ?)";
             $stmt_insert = $conn->prepare($sql_insert);
-            $stmt_insert->bind_param("sssss", $codigo_operacao, $nome, $preco, $fornecedor, $path);
+            $stmt_insert->bind_param("sssss", $codigo_operacao, $nome, $preco, $fornecedor_id, $path);
             
             // Executa a instrução preparada para inserir o novo produto
             $stmt_insert->execute();
