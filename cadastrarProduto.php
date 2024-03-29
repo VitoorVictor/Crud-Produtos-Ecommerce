@@ -47,6 +47,8 @@ include("consultaFornecedor.php");
         echo '<input type="text" id="codigo_operacao" name="codigo_operacao" required><br><br>';
         echo '<label for="nome">Nome:</label><br>';
         echo '<input type="text" id="nome" name="nome" required><br><br>';
+        echo '<label for="descricao">Descricao:</label><br>';
+        echo '<input type="text" id="descricao" name="descricao" required><br><br>';
         echo '<label for="fornecedor">Fornecedor:</label><br>';
         echo '<select id="fornecedor" name="fornecedor" required>';
         echo '<option value="" disabled selected>Selecione um fornecedor</option>';

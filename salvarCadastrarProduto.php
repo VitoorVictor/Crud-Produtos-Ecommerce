@@ -1,7 +1,8 @@
 <?php
-if (isset($_POST["codigo_operacao"]) && isset($_POST['nome']) && isset($_POST['fornecedor']) && isset($_POST['preco']) && isset($_FILES["file"])) {
+if (isset($_POST["codigo_operacao"]) && isset($_POST['nome']) && isset($_POST['descricao']) && isset($_POST['fornecedor']) && isset($_POST['preco']) && isset($_FILES["file"])) {
     $codigo_operacao = $_POST["codigo_operacao"];
     $nome = $_POST["nome"];
+    $descricao = $_POST["descricao"];
     $nome_fantasia_fornecedor = $_POST["fornecedor"];
     $preco = $_POST["preco"];
     $file = $_FILES["file"];
@@ -54,9 +55,9 @@ if (isset($_POST["codigo_operacao"]) && isset($_POST['nome']) && isset($_POST['f
 
         if ($saved) {
             // Prepara a consulta SQL para inserir o novo produto
-            $sql_insert = "INSERT INTO produtos (codigo_operacao, nome_produto, preco, fornecedor, img_path) VALUES (?, ?, ?, ?, ?)";
+            $sql_insert = "INSERT INTO produtos (codigo_operacao, nome_produto,descricao, preco, fornecedor, img_path) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt_insert = $conn->prepare($sql_insert);
-            $stmt_insert->bind_param("sssss", $codigo_operacao, $nome, $preco, $fornecedor_id, $path);
+            $stmt_insert->bind_param("ssssss", $codigo_operacao, $nome, $descricao, $preco, $fornecedor_id, $path);
             
             // Executa a instrução preparada para inserir o novo produto
             $stmt_insert->execute();
