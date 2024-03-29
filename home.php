@@ -70,51 +70,30 @@ $result = $conn->query($sql);
         <a href="cesta.php">CESTA</a>
     </div>
 
-    <main style="display: flex; flex-direction: column; align-items: center;">
-        <?php
-        $count = 0; // Inicializa o contador
-        if ($result->num_rows > 0) {
-            // Exibe os produtos
-            echo '<div class="row">'; // Abre a primeira linha
-            while ($row = $result->fetch_assoc()) {
-                // Início do card
-                echo '<div class="card" style="width: 15rem;">';
-
-                // Exibe a imagem do produto
-                echo '<img src="' . $row["img_path"] . '" class="card-img-top" height="240px" alt="' . $row["nome_produto"] . '">';
-
-                echo '<div class="card-body">';
-
-                // Exibe o nome do produto
-                echo '<h5 class="card-title">' . $row["nome_produto"] . '</h5>';
-
-                // Exibe a descrição do produto
-                echo '<p class="card-text">' . $row["descricao"] . '</p>';
-
-                // Exibe o preço do produto
-                echo '<p>R$ ' . number_format($row["preco"], 2, ',', '.') . '</p>';
-
-                // Exibe o preço do produto
-                echo '<a href="#" class="btn btn-primary">Adicionar a Cesta</a>';
-
-                // Fim do card
-                echo '</div>';
-
-                echo '</div>';
-                $count++; // Incrementa o contador
-                // Verifica se é o quarto produto da linha
-                if ($count % 6 == 0 && $count != $result->num_rows) {
-                    echo '</div><div class="row">'; // Fecha a linha atual e abre uma nova
+    <main class="container" style="display: flex; flex-direction: column; align-items: center;">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div class="col">';
+                    echo '<div class="card" style="width: 15rem;">';
+                    echo '<img src="' . $row["img_path"] . '" class="card-img-top" height="240px" alt="' . $row["nome_produto"] . '">';
+                    echo '<div class="card-body">';
+                    echo '<h5 class="card-title">' . $row["nome_produto"] . '</h5>';
+                    echo '<p class="card-text">' . $row["descricao"] . '</p>';
+                    echo '<p>R$ ' . number_format($row["preco"], 2, ',', '.') . '</p>';
+                    echo '<a href="#" class="btn btn-primary">Adicionar a Cesta</a>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
                 }
+            } else {
+                echo '<div class="col">';
+                echo '<p>Nenhum produto encontrado.</p>';
+                echo '</div>';
             }
-            echo '</div>'; // Fecha a última linha
-        } else {
-            echo "Nenhum produto encontrado.";
-        }
-
-        // Fecha a conexão com o banco de dados
-        $conn->close();
-        ?>
+            ?>
+        </div>
     </main>
 </body>
 
@@ -123,16 +102,3 @@ $result = $conn->query($sql);
 
 
 
-<!--<section class="produtos">
-            <h2>Nossos Produtos</h2>
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-
-        </section>

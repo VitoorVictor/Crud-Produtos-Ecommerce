@@ -1,8 +1,8 @@
 <?php
 
-include("conexao.php");
-include("salvarCadastrarProduto.php");
-include("consultaFornecedor.php");
+include ("conexao.php");
+include ("salvarCadastrarProduto.php");
+include ("consultaFornecedor.php");
 
 
 ?>
@@ -15,30 +15,30 @@ include("consultaFornecedor.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .hidden{
+        .hidden {
             display: none;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function() {
-        $('#file').change(function(e) {
-            let file = e.target.files[0];
-            let reader = new FileReader();
-            $('#preview').removeClass('hidden');
-            reader.onload = function(e) {
-                $('#preview').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(file);
+        $(document).ready(function () {
+            $('#file').change(function (e) {
+                let file = e.target.files[0];
+                let reader = new FileReader();
+                $('#preview').removeClass('hidden');
+                reader.onload = function (e) {
+                    $('#preview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(file);
+            });
         });
-    });
-</script>
+    </script>
 
 </head>
 
 
 <body>
-
+    <div class="produtosDiv">
     <?php
     if ($result->num_rows > 0) {
         // Início do formulário
@@ -52,12 +52,12 @@ include("consultaFornecedor.php");
         echo '<label for="fornecedor">Fornecedor:</label><br>';
         echo '<select id="fornecedor" name="fornecedor" required>';
         echo '<option value="" disabled selected>Selecione um fornecedor</option>';
-        
+
         // Loop através dos resultados da consulta para criar opções para cada fornecedor
-        while($row = $result->fetch_assoc()) {
+        while ($row = $result->fetch_assoc()) {
             echo '<option value="' . $row["nome_fantasia"] . '">' . $row["nome_fantasia"] . '</option>';
         }
-        
+
         echo '</select><br><br>';
         echo '<label for="preco">Preço:</label><br>';
         echo '<input type="number" id="preco" name="preco" step="0.01" required><br><br>';
@@ -71,9 +71,8 @@ include("consultaFornecedor.php");
         echo "Nenhum fornecedor encontrado.";
     }
     ?>
-    
+    </div>
+
 </body>
 
 </html>
-
- 
