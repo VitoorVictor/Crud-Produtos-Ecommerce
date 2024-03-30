@@ -1,9 +1,9 @@
 <?php
 
-include("conexao.php");
+    include("conexao.php");
 
 if(isset($_POST['username']) || isset($_POST['fullname']) || isset($_POST['email']) || isset($_POST['password'])) {
-    
+
     $username = $_POST['username'];
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];

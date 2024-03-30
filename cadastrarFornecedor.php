@@ -27,21 +27,6 @@ include_once("salvarCadastrarFornecedor.php");
         <label for="cnpj">CNPJ:</label><br>
         <input type="text" id="cnpj" name="cnpj" required><br><br>
 
-        <label for="nome_fantasia">Nome Fantasia:</label><br>
-        <input type="text" id="nome_fantasia" name="nome_fantasia" required><br><br>
-
-        <label for="rua">Rua:</label><br>
-        <input type="text" id="rua" name="rua" required><br><br>
-
-        <label for="bairro">Bairro:</label><br>
-        <input type="text" id="bairro" name="bairro" required><br><br>
-
-        <label for="numero_endereco">Número Endereço:</label><br>
-        <input type="text" id="numero_endereco" name="numero_endereco" required><br><br>
-
-        <label for="cep">CEP:</label><br>
-        <input type="text" id="cep" name="cep" required><br><br>
-
         <label for="numero_contato">Número Contato:</label><br>
         <input type="text" id="numero_contato" name="numero_contato" required><br><br>
 

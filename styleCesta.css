@@ -100,5 +100,23 @@ nav {
     font-size: 36px;
     margin-left: 50px;
 }
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-left: 10px; /* Margem esquerda */
+    margin-right: 10px; /* Margem direita */
+}
+
+.search-input {
+    flex-grow: 1; /* Ocupa todo o espaço disponível */
+    margin-left: 10px; /* Espaço entre o ícone e o campo de pesquisa */
+}
+.search-icon {
+    width: 20px; /* Largura fixa para o ícone */
+    margin-right: 10px; /* Margem à direita do ícone */
+    color: #777; /* Cor do ícone */
+}
+
+
 
 

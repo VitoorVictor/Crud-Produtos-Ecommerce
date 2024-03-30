@@ -7,17 +7,14 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-if (isset($_POST['logout'])) {
-    session_destroy();
-    header("Location: index.php");
-}
+
 
 // Query para selecionar os produtos da tabela produtos
-$sql = "SELECT nome_produto, descricao, preco, img_path FROM produtos";
-$result = $conn->query($sql);
+        $sql = "SELECT p.id,nome_produto, descricao, preco, img_path FROM produtos as p";
+        $result = $conn->query($sql);
 
 // Verifica se há algum resultado retornado pela consulta
-
+        
 ?>
 
 
@@ -36,6 +33,7 @@ $result = $conn->query($sql);
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="styleHome.css">
     <script src="scriptSideBar.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
 </head>
@@ -69,6 +67,11 @@ $result = $conn->query($sql);
         <a href="cadastrar.php">CADASTRAR</a>
         <a href="cesta.php">CESTA</a>
     </div>
+    <div class="search-bar">
+        <i class="fas fa-search search-icon"></i> <!-- Ícone de pesquisa -->
+        <input type="text" class="search-input form-control" placeholder="Pesquisar...">
+    </div>
+    <main>
 
     <main class="container" style="display: flex; flex-direction: column; align-items: center;">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
@@ -82,7 +85,7 @@ $result = $conn->query($sql);
                     echo '<h5 class="card-title">' . $row["nome_produto"] . '</h5>';
                     echo '<p class="card-text">' . $row["descricao"] . '</p>';
                     echo '<p>R$ ' . number_format($row["preco"], 2, ',', '.') . '</p>';
-                    echo '<a href="#" class="btn btn-primary">Adicionar a Cesta</a>';
+                    echo '<a href="#" class="btn btn-primary btn-add-to-basket" data-product-id="' . $row["id"] . '">Adicionar à Cesta</a>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
@@ -95,10 +98,27 @@ $result = $conn->query($sql);
             ?>
         </div>
     </main>
+    <script>
+        $(document).ready(function () {
+            $('.btn-add-to-basket').click(function (e) {
+                e.preventDefault();
+                let productId = $(this).data('product-id'); // Obtém o ID do produto do atributo data-
+
+                // Envia a solicitação AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: 'adicionarCesta.php', // Rota no lado do servidor para adicionar à cesta
+                    data: { productId: productId }, // Envia o ID do produto
+                    success: function (response) {
+                        alert(response); // Exibe uma mensagem de sucesso
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(error); // Exibe erros no console
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
-
-
-
-

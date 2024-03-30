@@ -14,4 +14,7 @@ if ($conn->connect_errno) {
 } else {
 }
 
-?>
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header("Location: index.php");
+}
