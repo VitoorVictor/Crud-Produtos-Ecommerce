@@ -1,0 +1,61 @@
+body {
+    padding: 50px;
+    background-image: url("img/graos.jpg");
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 140px;
+    color: rgb(255, 255, 255);
+}
+
+.overlay {
+    position: absolute;
+    margin-left: 25%;
+    top: -4%;
+    left: 16%;
+    width: 35%;
+    height: 35%;
+    background-image: url("img/LOGO.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+form {
+    display: inline-block;
+    margin-top: -50px;
+    text-align: left;
+    padding: 60px;
+}
+
+label {
+    display: block;
+    margin-bottom: 1%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 400px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(225, 218, 218);
+}
+
+input[type="submit"] {
+    width: 50%;
+    padding: 10px;
+    background-color: #086724;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+input[type="submit"]:hover {
+    background-color: #4d7c5b;
+}

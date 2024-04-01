@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview da Imagem</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <input type="file" id="file">
+    <img id="preview" src="#" alt="Preview da Imagem" class="hidden">
+
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $('#file').change(function (e) {
+                let file = e.target.files[0];
+                let reader = new FileReader();
+                $('#preview').removeClass('hidden');
+                reader.onload = function (e) {
+                    $('#preview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(file);
+            });
+        });
+    </script>
+
+</body>
+</html>
