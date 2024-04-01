@@ -2,8 +2,13 @@
 
 include("conexao.php");
 
+<<<<<<< HEAD
 if (isset($_POST['username']) || isset($_POST['fullname']) || isset($_POST['email']) || isset($_POST['password'])) {
 
+=======
+if(isset($_POST['username']) || isset($_POST['fullname']) || isset($_POST['email']) || isset($_POST['password'])) {
+    
+>>>>>>> 2ba88c1d19ce13ccd10b10f56cc6c5b377e6b198
     $username = $_POST['username'];
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];
@@ -27,6 +32,7 @@ if (isset($_POST['username']) || isset($_POST['fullname']) || isset($_POST['emai
 
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 
 <head>
     <meta charset="UTF-8">
@@ -64,11 +70,38 @@ if (isset($_POST['username']) || isset($_POST['fullname']) || isset($_POST['emai
         <input type="submit" value="Cadastrar">
 
 
+=======
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+</head>
+<body>
+    <h2>Cadastro de Usuário</h2>
+    <form action="" method="POST" id="cadastroForm">
+        <label for="nome">Nome de Usuário:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="nome_completo">Nome Completo:</label>
+        <input type="text" id="fullname" name="fullname" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <input type="submit" value="Cadastrar">
+>>>>>>> 2ba88c1d19ce13ccd10b10f56cc6c5b377e6b198
     </form>
 
     <script>
         document.getElementById("cadastroForm").addEventListener("submit", function(event) {
+<<<<<<< HEAD
             event.preventDefault();
+=======
+            event.preventDefault(); 
+>>>>>>> 2ba88c1d19ce13ccd10b10f56cc6c5b377e6b198
 
             let formData = new FormData(this);
 
@@ -85,5 +118,8 @@ if (isset($_POST['username']) || isset($_POST['fullname']) || isset($_POST['emai
         });
     </script>
 </body>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2ba88c1d19ce13ccd10b10f56cc6c5b377e6b198
 </html>
