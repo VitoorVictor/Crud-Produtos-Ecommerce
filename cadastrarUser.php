@@ -2,6 +2,10 @@
 
     include("conexao.php");
 
+<<<<<<< HEAD
+if (isset($_POST['username']) || isset($_POST['fullname']) || isset($_POST['email']) || isset($_POST['password'])) {
+
+=======
 if(isset($_POST['username']) || isset($_POST['fullname']) || isset($_POST['email']) || isset($_POST['password'])) {
 
     $username = $_POST['username'];
@@ -27,6 +31,45 @@ if(isset($_POST['username']) || isset($_POST['fullname']) || isset($_POST['email
 
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cadastrarUser.css">
+    <title>Cadastro de Usuárioo</title>
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <h2>CRIAR CONTA</h2>
+
+    <form action="" method="POST" id="cadastroForm">
+        <label for="nome">Nome de Usuário:</label>
+        <input type="text" id="username" name="username" required>
+
+
+        <label for="nome_completo">Nome Completo:</label>
+        <input type="text" id="fullname" name="fullname" required>
+
+
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="password" name="password" required>
+
+
+
+        <input type="submit" value="Cadastrar">
+
+
+=======
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,11 +91,16 @@ if(isset($_POST['username']) || isset($_POST['fullname']) || isset($_POST['email
         <input type="password" id="password" name="password" required><br><br>
 
         <input type="submit" value="Cadastrar">
+>>>>>>> 2ba88c1d19ce13ccd10b10f56cc6c5b377e6b198
     </form>
 
     <script>
         document.getElementById("cadastroForm").addEventListener("submit", function(event) {
+<<<<<<< HEAD
+            event.preventDefault();
+=======
             event.preventDefault(); 
+>>>>>>> 2ba88c1d19ce13ccd10b10f56cc6c5b377e6b198
 
             let formData = new FormData(this);
 
@@ -69,4 +117,8 @@ if(isset($_POST['username']) || isset($_POST['fullname']) || isset($_POST['email
         });
     </script>
 </body>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 2ba88c1d19ce13ccd10b10f56cc6c5b377e6b198
 </html>
