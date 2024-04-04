@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("img/graos.jpg");
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
+
+.logo {
+    position: absolute;
+    margin-left: 25%;
+    top: -4%;
+    left: 16%;
+    width: 35%;
+    height: 35%;
+    background-image: url("img/LOGO.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.container h1 {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.container label {
+    font-size: 17px;
+    margin-bottom: 8px;
+    display: block;
+    text-align: left;
+}
+
+/* campos de entrada de textos*/
+.container input {
+    background-color: rgb(225, 218, 218);
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    width: 400px;
+    margin-bottom: 20px;
+    color: black;
+    display: block;
+    margin: 0 auto;
+}
+
+.container button {
+    padding: 10px 100px;
+    background-color: #086724;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+/*"Esqueci a senha" */
+.container a {
+    font-size: 15px;
+    text-align: center;
+    color: #e6e6e6;
+    display: block;
+    margin-bottom: 20px;
+}

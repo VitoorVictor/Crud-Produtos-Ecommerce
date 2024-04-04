@@ -21,7 +21,7 @@ function generateProductForm($result)
 
     // Loop através dos resultados da consulta para criar opções para cada fornecedor
     while ($row = $result->fetch_assoc()) {
-        echo '<option value="' . $row["nome_fantasia"] . '">' . $row["nome_fantasia"] . '</option>';
+        echo '<option value="' . $row["razao_social"] . '">' . $row["razao_social"] . '</option>';
     }
 
     echo '</select><br><br>';
@@ -34,7 +34,6 @@ function generateProductForm($result)
     echo '<input type="submit" value="Enviar">';
     echo '</form>';
 }
-
 
 ?>
 
@@ -123,7 +122,7 @@ function generateProductForm($result)
         </div>
         <div id="conteudoCadastroFornecedor" style="background-color: lightgray; display: none;"></div>
     </div>
-    <div class="hidden">
+    <div>
         <!-- Exibir todos os produtos registrados -->
         <h2>Produtos Registrados</h2>
         <table border="1">
@@ -143,10 +142,10 @@ function generateProductForm($result)
                 // Consulta SQL para selecionar todos os produtos
                 $sql = "SELECT * FROM produtos";
                 $result = $conn->query($sql);
-
                 if ($result->num_rows > 0) {
                     // Exibir os dados de cada produto em uma linha da tabela
                     while ($row = $result->fetch_assoc()) {
+                        $idExcluir = $row["id"];
                         echo "<tr>";
                         echo "<td>" . $row["codigo_operacao"] . "</td>";
                         echo "<td>" . $row["nome_produto"] . "</td>";
@@ -154,7 +153,7 @@ function generateProductForm($result)
                         echo "<td>" . $row["fornecedor"] . "</td>";
                         echo "<td>" . $row["preco"] . "</td>";
                         echo "<td>" . "<i class='fas fa-cog'></i>" . "</td>";
-                        echo "<td>" . "<i class='fas fa-trash-alt delete-product' data-id='" . $row["id"] . "'></i>" . "</td>";
+                        echo "<td>" . "<i class='fas fa-trash-alt delete-product' data-id='" . $idExcluir . "'></i>" . "</td>";
                         echo "</tr>";
                     }
                 } else {
@@ -234,24 +233,27 @@ function generateProductForm($result)
         });
 
         $(document).ready(function () {
-        $('.delete-product').click(function () {
-            let productId = $(this).data('id');
-            if (confirm('Tem certeza de que deseja excluir este produto?')) {
-                $.ajax({
-                    type: 'POST',
-                    url: 'excluirProduto.php', // Arquivo PHP para lidar com a exclusão do produto
-                    data: {id: productId},
-                    success: function (response) {
-                        // Atualize a página ou faça qualquer outra ação necessária após a exclusão bem-sucedida
-                        location.reload();
-                    },
-                    error: function (xhr, status, error) {
-                        alert('Erro ao excluir o produto: ' + error);
-                    }
-                });
-            }
-        });
+    $('.delete-product').click(function () {
+        let productId = $(this).data('id');
+        console.log("ID do produto:", productId); // Adicione esta linha para verificar o valor de productId
+        if (confirm('Tem certeza de que deseja excluir este produto?')) {
+            $.ajax({
+                type: 'POST',
+                url: 'excluirProduto.php', // Certifique-se de que o URL está correto
+                data: {productId: productId}, // Verifique se o nome do campo está correto
+                success: function (response) {
+                    console.log(response); // Adicione esta linha para verificar a resposta do servidor
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    alert('Erro ao excluir o produto: ' + error);
+                }
+            });
+        }
     });
+});
+
+
     </script>
 
     <script src="scriptSideBar.js" defer></script>

@@ -55,7 +55,7 @@ include ("consultaFornecedor.php");
 
         // Loop através dos resultados da consulta para criar opções para cada fornecedor
         while ($row = $result->fetch_assoc()) {
-            echo '<option value="' . $row["nome_fantasia"] . '">' . $row["nome_fantasia"] . '</option>';
+            echo '<option value="' . $row["razao_social"] . '">' . $row["razao_social"] . '</option>';
         }
 
         echo '</select><br><br>';

@@ -1,13 +1,13 @@
 
 <?php
 
-include_once("conexao.php");
-include_once("salvarCadastrarFornecedor.php");
+include("conexao.php");
+include("salvarCadastrarFornecedor.php");
+
+
+
+
 ?>
-
-
-
-
 
 
 

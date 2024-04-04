@@ -17,7 +17,7 @@ body {
 .openbtn {
     font-size: 18px;
     cursor: pointer;
-    background-color: #1e441f;
+    background-color: #1f441e;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -38,7 +38,7 @@ body {
 nav {
     display: flex;
     justify-content: space-between;
-    background-color: #1e441f;
+    background-color: #1f441e;
 }
 
 .iconsCrud ul {
@@ -48,7 +48,7 @@ nav {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    background-color: #1e441f;
+    background-color: #1f441e;
 }
 
 .iconsCrud ul li {
@@ -57,6 +57,7 @@ nav {
     color: #fff;
 }
 
+/* botao sair*/
 .logout-btn {
     font-size: 16px;
     cursor: pointer;
@@ -96,14 +97,6 @@ nav {
     background-color: #167909;
 }
 
-.closebtn {
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
 /* barra de pesquisa*/
 .search-bar {
     display: flex;
@@ -122,4 +115,40 @@ nav {
     width: 20px;
     margin-right: 10px;
     color: #ffffff;
+}
+
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.produtos {
+    z-index: 0;
+}
+
+.card {
+    width: 23%;
+    margin: 25px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* cards */
+@media (max-width: 768px) {
+    .card {
+        width: 48%;
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        width: 100%;
+    }
 }

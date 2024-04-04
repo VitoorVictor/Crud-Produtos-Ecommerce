@@ -3,7 +3,7 @@ if (isset($_POST["codigo_operacao"]) && isset($_POST['nome']) && isset($_POST['d
     $codigo_operacao = $_POST["codigo_operacao"];
     $nome = $_POST["nome"];
     $descricao = $_POST["descricao"];
-    $nome_fantasia_fornecedor = $_POST["fornecedor"];
+    $razao_social_fornecedor = $_POST["fornecedor"];
     $preco = $_POST["preco"];
     $file = $_FILES["file"];
 
@@ -14,9 +14,9 @@ if (isset($_POST["codigo_operacao"]) && isset($_POST['nome']) && isset($_POST['d
     $stmt_check->execute();
     $result_check = $stmt_check->get_result();
     
-    $sql_select_fornecedor_id = "SELECT id FROM fornecedores WHERE nome_fantasia = ?";
+    $sql_select_fornecedor_id = "SELECT id FROM fornecedores WHERE razao_social = ?";
     $stmt_select_fornecedor_id = $conn->prepare($sql_select_fornecedor_id);
-    $stmt_select_fornecedor_id->bind_param("s", $nome_fantasia_fornecedor);
+    $stmt_select_fornecedor_id->bind_param("s", $razao_social_fornecedor);
     $stmt_select_fornecedor_id->execute();
     $result_select_fornecedor_id = $stmt_select_fornecedor_id->get_result();
 
